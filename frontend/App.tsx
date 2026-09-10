@@ -1,19 +1,55 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, SafeAreaView } from 'react-native';
-import LeafletMap from './src/services/location/LeafletMap'; // Adjust path if needed
+import "./global.css";
+import { useCallback } from "react";
+import { View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
+import * as SplashScreen from "expo-splash-screen";
+import {
+  useFonts,
+  PlusJakartaSans_400Regular,
+  PlusJakartaSans_500Medium,
+  PlusJakartaSans_600SemiBold,
+  PlusJakartaSans_700Bold,
+} from "@expo-google-fonts/plus-jakarta-sans";
+
+import { AuthNavigator } from "./src/navigation/AuthNavigator";
+import LeafletMap from "./src/services/location/LeafletMap";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    PlusJakartaSans_400Regular,
+    PlusJakartaSans_500Medium,
+    PlusJakartaSans_600SemiBold,
+    PlusJakartaSans_700Bold,
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <SafeAreaView style={styles.container}>
-      <LeafletMap />
-      <StatusBar style="auto" />
-    </SafeAreaView>
+    <SafeAreaProvider onLayout={onLayoutRootView}>
+      <StatusBar style="dark" />
+      <View style={{ flex: 1 }}>
+        {/* Chamika's Authentication Flow */}
+        <NavigationContainer>
+          <AuthNavigator />
+        </NavigationContainer>
+        
+        {/* Your Map Component */}
+        {/* Note: Commented out temporarily so it does not overlap the login UI. 
+            You can move this into one of Chamika's screens next. */}
+        {/* <LeafletMap /> */}
+      </View>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});

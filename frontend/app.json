@@ -1,5 +1,6 @@
 {
   "expo": {
+<<<<<<< HEAD
     "name": "temp-app",
     "slug": "temp-app",
     "version": "1.0.0",
@@ -21,5 +22,29 @@
     "web": {
       "favicon": "./assets/favicon.png"
     }
+=======
+    "name": "FIXGO",
+    "slug": "fixgo",
+    "scheme": "fixgo",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#FFFFFF"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.fixgo.app"
+    },
+    "android": {
+      "package": "com.fixgo.app"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-splash-screen",
+      "expo-status-bar"
+    ]
+>>>>>>> upstream/DEV/CHAMIKA
   }
 }
