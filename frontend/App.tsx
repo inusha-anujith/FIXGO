@@ -5,6 +5,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
+
+import { CustomerNavigator } from "./src/navigation/CustomerNavigator";
+
 import {
   useFonts,
   PlusJakartaSans_400Regular,
@@ -40,15 +43,15 @@ export default function App() {
     <SafeAreaProvider onLayout={onLayoutRootView}>
       <StatusBar style="dark" />
       <View style={{ flex: 1 }}>
-        {/* Chamika's Authentication Flow */}
-        <NavigationContainer>
+        {/* Chamika's Authentication Flow (Disabled for Dev) */}
+        {/* <NavigationContainer>
           <AuthNavigator />
-        </NavigationContainer>
+        </NavigationContainer> */}
         
-        {/* Your Map Component */}
-        {/* Note: Commented out temporarily so it does not overlap the login UI. 
-            You can move this into one of Chamika's screens next. */}
-        {/* <LeafletMap /> */}
+        {/* Your Customer Flow (Active) */}
+        <NavigationContainer>
+          <CustomerNavigator />
+        </NavigationContainer>
       </View>
     </SafeAreaProvider>
   );
