@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "FIXGO",
+    "slug": "fixgo",
+    "scheme": "fixgo",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#FFFFFF"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.fixgo.app"
+    },
+    "android": {
+      "package": "com.fixgo.app"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-splash-screen",
+      "expo-status-bar"
+    ]
+  }
+}
